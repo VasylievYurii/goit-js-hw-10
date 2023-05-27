@@ -1,18 +1,17 @@
 import './css/styles.css';
 import Notiflix from 'notiflix';
-import {fetchCatByBreed, fetchBreeds} from './cat-api';
+import { fetchCatByBreed, fetchBreeds } from './cat-api';
 
 const breedSelectRef = document.querySelector('.breed-select');
 const catInfoRef = document.querySelector('.cat-info');
 const loaderRef = document.querySelector('.loader');
-
 
 loaderRef.classList.add('hidden');
 catInfoRef.classList.add('hidden');
 let breedId = '';
 
 function showCatByBreed(event) {
-  hideCatInfo()
+  hideCatInfo();
   breedId = event.target.value;
 
   fetchCatByBreed(breedId)
@@ -26,9 +25,10 @@ function showCatByBreed(event) {
 breedSelectRef.addEventListener('change', showCatByBreed);
 
 function showBreeds() {
-  hideCatInfo()
-  
-  fetchBreeds().then(markupBreedsSelect)
+  hideCatInfo();
+
+  fetchBreeds()
+    .then(markupBreedsSelect)
     .catch(error => {
       loaderRef.classList.add('hidden');
       errorNotiflix();
@@ -74,8 +74,8 @@ function markupBreedsSelect(data) {
   loaderRef.classList.add('hidden');
 }
 
-function hideCatInfo(){
-  if (!catInfoRef.classList.contains('hidden')){
+function hideCatInfo() {
+  if (!catInfoRef.classList.contains('hidden')) {
     catInfoRef.classList.add('hidden');
   }
   loaderRef.classList.remove('hidden');
