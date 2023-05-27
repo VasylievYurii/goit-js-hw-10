@@ -18,6 +18,7 @@ function showCatByBreed(event) {
   fetchCatByBreed(breedId)
     .then(markupCurrentBreed)
     .catch(error => {
+      loaderRef.classList.add('hidden');
       errorNotiflix();
     });
 }
@@ -29,6 +30,7 @@ function showBreeds() {
   
   fetchBreeds().then(markupBreedsSelect)
     .catch(error => {
+      loaderRef.classList.add('hidden');
       errorNotiflix();
     });
 }
@@ -48,7 +50,7 @@ function errorNotiflix() {
 function markupCurrentBreed(data) {
   const markup = el => {
     return ` 
- <img class="cat-img" src="${el.url}" alt="" >
+ <img class="cat-img" src="${el.url}" alt="${el.breeds[0].name}" >
  <div class="cat-text">
  <h1 class="cat-header">${el.breeds[0].name}</h1>
  <p>${el.breeds[0].description}</p>
