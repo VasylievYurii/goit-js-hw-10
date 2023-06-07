@@ -25,7 +25,8 @@ body {
   height: 32px;
   position: absolute;
   border-radius: 50%;
-  color: #FF3D00;
+  /* color: #FF3D00; */
+  color: #00ff11;
   animation: fill 1s ease-in infinite alternate;
   top: 50%;
   left: 50%;
